@@ -1,4 +1,5 @@
-""" Plugin to add next & prev links to items in a collection"""
+"""Plugin to add next & prev links to items in a collection"""
+
 from render_engine import Collection, Site
 from render_engine.plugins import hook_impl
 
