@@ -1,10 +1,30 @@
 # re-plugin-pack
 
+[![Tests](https://github.com/brass75/re_plugin_pack/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/brass75/re_plugin_pack/actions/workflows/test.yml)
+[![Mastodon Follow](https://img.shields.io/mastodon/follow/109552736199041636?domain=https%3A%2F%2Ftwit.social&style=flat)](https://twit.social/@brass75)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
+
 This is a plugin pack for the `render-engine` static site generator. It currently includes the
 following plugins:
 
 - [`LatestEntries`](#latestentries)
 - [`NextPrevPlugin`](#nextprevplugin)
+
+## Installation
+
+To install just run:
+
+```shell
+pip install re-plugin-pack
+```
+
+Once installed you can access the plugins by importing `re_plugin_pack`:
+
+```python
+import re_plugin_pack
+from re_plugin_pack import <plugin>
+```
 
 ## `LatestEntries`
 
