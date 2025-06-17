@@ -3,9 +3,7 @@ from pathlib import Path
 
 import pytest
 from render_engine import Collection, Page, Site
-from render_engine.plugins import PluginManager
 
-from re_plugin_pack import LatestEntries
 from re_plugin_pack.plugins.drafts import Drafts
 
 
@@ -22,20 +20,21 @@ def site():
 class Page1(Page):
     content = title = 'page1'
 
+
 class Page2(Page):
     content = title = 'page2'
     draft = True
+
 
 class Page3(Page):
     content = title = 'page3'
     draft = False
 
-@pytest.mark.parametrize('show_drafts, expected', [
-    (False, 2),
-    (True, 3)
-])
+
+@pytest.mark.parametrize('show_drafts, expected', [(False, 2), (True, 3)])
 def test_drafts(show_drafts, expected, site):
-    """ Tests that drafts are filtered properly """
+    """Tests that drafts are filtered properly"""
+
     @site.collection
     class MyCollection(Collection):
         pages = [Page1(), Page2(), Page3()]
