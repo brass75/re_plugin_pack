@@ -10,7 +10,7 @@ following plugins:
 
 - [`LatestEntries`](#latestentries)
 - [`NextPrevPlugin`](#nextprevplugin)
-- [`Drafts`](Drafts)
+- [`Drafts`](#drafts)
 
 ## Installation
 
@@ -31,7 +31,7 @@ from re_plugin_pack import <plugin>
 
 This plugin will add a list of the latest entries for one or more `Collection`s to a given `Page`.
 It can be configured at the Page or `Site` levels and can be configured to provide the latest entries
-for any number of `Collection`s. The entries used are in the sort order as defined in the `Collection` 
+for any number of `Collection`s. The entries used are in the sort order as defined in the `Collection`
 object.
 
 ### Settings
@@ -48,24 +48,24 @@ The plugin has the following default settings:
 ```
 - `collection` - a list of attributes to include for the collection.
 - `entries` - a list of attributes to include for a given entry.
-- `pages` - a list of pages to add the `COLLECTIONS` entry to it's `template_vars` (Only needed when running as a 
+- `pages` - a list of pages to add the `COLLECTIONS` entry to it's `template_vars` (Only needed when running as a
 `Site` plugin)
-- `max_entries` - The maximum number of entries to include for a collection. The default is 3. `-1` indicates 
-that all entries should be populated. 
+- `max_entries` - The maximum number of entries to include for a collection. The default is 3. `-1` indicates
+that all entries should be populated.
 
 In addition to the default settings entries can be added for each `Collection` defining how many
 entries it should include:
 
-- Positive integer - Include up to the number specified entries. For example: `'Collection1': 5` 
+- Positive integer - Include up to the number specified entries. For example: `'Collection1': 5`
 will include the 5 latest entries in the `template_vars`.
-- `0` - Exclude this collection. For example: `'Collection2': 0` will not include `Collection2` 
+- `0` - Exclude this collection. For example: `'Collection2': 0` will not include `Collection2`
 in the `template_vars`.
 - Negative integer - Include all entries. For example: `'Collection3': -1` will include all
 entries for `Collection3` in the `template_vars`
 
 ### `Page` level configuration
 
-To configure at the `Page` level just include `(LatestEntris, <settings_dict)` in the `plugins` 
+To configure at the `Page` level just include `(LatestEntris, <settings_dict)` in the `plugins`
 attribute when declaring the `Page`. If no settings overrides are needed, include `LatestEntries`
 by itself in the `plugin` attribute.
 
@@ -110,7 +110,7 @@ app.register_plugins(LatestEntries, LatestEntries={'pages': ['page1', 'page2']})
 app.register_plugins(LatestEntries, LatestEntries={'max_entries': 0, 'Blog': 3})
 ```
 
-NOTE: If configuring at the `Site` level the registration should be done _after_ adding all 
+NOTE: If configuring at the `Site` level the registration should be done _after_ adding all
 `Page` entries to the `Site`. When adding a `Page` to a `Site` all plugins registered to the
 `Site` are automatically registered to the new `Page` object.
 
@@ -133,7 +133,7 @@ Example template implementation:
 
 ## `NextPrevPlugin`
 
-This plugin will give each page in a `Collection` access to certain attributes of the next and 
+This plugin will give each page in a `Collection` access to certain attributes of the next and
 previous pages in the collection. By default, only the URL and title of those pages will be
 made available, however additional attributes may also be requested via the settings. If an
 attributes is in the list to include but does not exist in the page(s) `None` will be used.
@@ -143,7 +143,7 @@ level.
 ### Settings
 
 This plugin has no default settings. If you wish to add additional attributes, include in the
-registration a settings dictionary with a key of `additional_attributes` having a list of 
+registration a settings dictionary with a key of `additional_attributes` having a list of
 attributes as its value.
 
 ### `Site` level configuration
@@ -166,13 +166,13 @@ app.register_plugins(NextPrevPlugin, NextPrevPlugin={'additional_attributes': ['
 app.register_plugins(NextPrevPlugin)
 ```
 
-NOTE: If configuring at the `Site` level the registration should be done _after_ adding all 
-`Collection` entries to the `Site`. When adding a `Collection` to a `Site` all plugins 
+NOTE: If configuring at the `Site` level the registration should be done _after_ adding all
+`Collection` entries to the `Site`. When adding a `Collection` to a `Site` all plugins
 registered to the `Site` are automatically registered to the new `Collection` object.
 
 ### `Collection` level configuration
 
-To configure at the `Page` level just include `(NextPrevPlugin, <settings_dict)` in the `plugins` 
+To configure at the `Page` level just include `(NextPrevPlugin, <settings_dict)` in the `plugins`
 attribute when declaring the `Collection`. If no settings overrides are needed, include
 `NextPrevPlugin` by itself in the `plugin` attribute.
 
@@ -200,7 +200,7 @@ class MyPage(Page):
 
 ### Including in the `Collection` template
 
-When run this plugin will add a dictionary with the requested data to the `template_vars` of 
+When run this plugin will add a dictionary with the requested data to the `template_vars` of
 each page in the `Collection`. The dictionary added looks like:
 
 ```python
@@ -230,7 +230,7 @@ Next: <a href="{{ next_url }}">{{ next_title }}</a>
 {% endif %}
 ```
 
-## Drafts
+## `Drafts`
 
 This is a plugin that will skip pages in a `Collection` that are marked as `draft`.  This allows
 you to have WIP posts and still make changes to other things without publishing things that are
@@ -251,7 +251,7 @@ and remove all pages in the collection that have a `True` value for the `draft` 
 not be rendered when building the site. This plugin runs at the `Collection` level and can be
 registered either `Site`-wide or for individual collections.
 
-**NOTE**: Plugins run in the reverse order of registration. If you are using both this and 
+**NOTE**: Plugins run in the reverse order of registration. If you are using both this and
 [`NextPrevPlugin`](NextPrevPlugin) make sure that you register `NextPrevPlugin` (or any similar
 plugin) _before_ you register `Drafts` or you might have unexpected results as pages that were
 processed will have been removed.
@@ -259,7 +259,7 @@ processed will have been removed.
 ### Making sure that drafts show locally but not on your production site
 
 In order to have this work effectively, so that you can see the draft posts locally when you
-use `render-engine serve`, you will need to differentiate between the environments. To 
+use `render-engine serve`, you will need to differentiate between the environments. To
 accomplish this you can use an environment variable and add this line of code into your
 `app.py`:
 
@@ -292,7 +292,7 @@ class MyCollection(Collection):
 ### Using `Drafts` with `NextPrevPlugin` (or other, similar, `Collection` level plugins)
 
 Make sure that you register plugins in the order that you want them to run. Remember that
-any plugin that is registered with the `Site` prior to creating the `Collection` is included 
+any plugin that is registered with the `Site` prior to creating the `Collection` is included
 in the `Collection` the will have been registered first and will run _after_ plugins that
 are registered at the `Collection` level. Since plugins are invoked in the _reverse_ order
 of registration `Drafts` should be the last plugin run for a `Collection`.
@@ -328,4 +328,3 @@ draft: Yes
 ---
 This is a draft post
 ```
-
