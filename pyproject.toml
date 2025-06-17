@@ -1,6 +1,6 @@
 [project]
 name = "re_plugin_pack"
-version = "2025.6.1b3"
+version = "2025.6.1b4"
 description = "Plugin pack for render-engine static site generator"
 readme = "README.md"
 authors = [{name = "Dan Shernicoff", email = "dan@brassnet.biz"}]
@@ -17,7 +17,8 @@ dev = [
     "freezegun>=1.5.2",
     "pytest>=8.4.0",
     "uv-build>=0.7.12,<0.8.0",
-    "ruff"
+    "ruff",
+    "pre-commit>=4.2.0",
 ]
 
 [project.urls]
@@ -54,4 +55,3 @@ docstring-code-format = true
 [build-system]
 requires = ["uv_build>=0.7.12,<0.8.0"]
 build-backend = "uv_build"
-
