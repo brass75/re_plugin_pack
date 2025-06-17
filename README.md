@@ -10,6 +10,7 @@ following plugins:
 
 - [`LatestEntries`](#latestentries)
 - [`NextPrevPlugin`](#nextprevplugin)
+- [`Drafts`](Drafts)
 
 ## Installation
 
@@ -228,3 +229,103 @@ Next: <a href="{{ next_url }}">{{ next_title }}</a>
 </span>
 {% endif %}
 ```
+
+## Drafts
+
+This is a plugin that will skip pages in a `Collection` that are marked as `draft`.  This allows
+you to have WIP posts and still make changes to other things without publishing things that are
+not ready to be posted.
+
+### Settings
+
+The `Drafts` plugin has a single setting:
+
+```python
+{
+    'show_drafts': True,
+}
+```
+
+When `show_drafts` is set to `False` the plugin will run, prior to rendering the `Collection`
+and remove all pages in the collection that have a `True` value for the `draft` attribute will
+not be rendered when building the site. This plugin runs at the `Collection` level and can be
+registered either `Site`-wide or for individual collections.
+
+**NOTE**: Plugins run in the reverse order of registration. If you are using both this and 
+[`NextPrevPlugin`](NextPrevPlugin) make sure that you register `NextPrevPlugin` (or any similar
+plugin) _before_ you register `Drafts` or you might have unexpected results as pages that were
+processed will have been removed.
+
+### Making sure that drafts show locally but not on your production site
+
+In order to have this work effectively, so that you can see the draft posts locally when you
+use `render-engine serve`, you will need to differentiate between the environments. To 
+accomplish this you can use an environment variable and add this line of code into your
+`app.py`:
+
+```python
+import os
+
+ENABLE_DRAFTS = {"show_drafts": os.environ.get("SHOW_DRAFTS", False)}
+```
+
+When you register the plugin make sure to include the `ENABLE_DRAFTS` as the settings
+for the plugin:
+
+```python
+import os
+from re_plugin_pack import Drafts
+from render_engine import Site, Collection
+
+ENABLE_DRAFTS = {"show_drafts": os.environ.get("SHOW_DRAFTS", False)}app=Site()
+
+# Either at the `Site` level:
+app.register_plugins(Drafts, Drafts=ENABLE_DRAFTS)
+
+# Or at the `Collection` level:
+@app.collection
+class MyCollection(Collection):
+    plugins=[(Drafts, ENABLE_DRAFTS)]
+    ...
+```
+
+### Using `Drafts` with `NextPrevPlugin` (or other, similar, `Collection` level plugins)
+
+Make sure that you register plugins in the order that you want them to run. Remember that
+any plugin that is registered with the `Site` prior to creating the `Collection` is included 
+in the `Collection` the will have been registered first and will run _after_ plugins that
+are registered at the `Collection` level. Since plugins are invoked in the _reverse_ order
+of registration `Drafts` should be the last plugin run for a `Collection`.
+
+Example registration:
+
+```python
+import os
+from re_plugin_pack import Drafts, NextPrevPlugin
+from render_engine import Site, Collection
+
+ENABLE_DRAFTS = {"show_drafts": os.environ.get("SHOW_DRAFTS", False)}app=Site()
+
+@app.collection
+class MyCollection(Collection):
+    plugins = [
+        NextPrevPlugin,
+        (Drafts, ENABLE_DRAFTS),
+    ]
+```
+
+The above order will run the `Drafts` plugin first on that collection.
+
+### Marking a post as a `draft`
+
+To mark a post as a `draft` just add a truthy value for the `draft` attribute to the content:
+
+```
+---
+title: WIP Post
+date: 2025-06-01T02:49:18
+draft: Yes
+---
+This is a draft post
+```
+

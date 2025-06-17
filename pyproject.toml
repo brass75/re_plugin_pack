@@ -1,6 +1,6 @@
 [project]
 name = "re_plugin_pack"
-version = "2025.6.1b3"
+version = "2025.6.1b4"
 description = "Plugin pack for render-engine static site generator"
 readme = "README.md"
 authors = [{name = "Dan Shernicoff", email = "dan@brassnet.biz"}]
