@@ -16,9 +16,6 @@ jobs:
         uses: astral-sh/setup-uv@v5
       - run: echo "SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)" >> $GITHUB_ENV
       - run: uv build
-      - uses: actions/upload-artifact@v4
-        with:
-          path: ./dist
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: ./dist
