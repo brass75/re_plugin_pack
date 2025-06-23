@@ -4,7 +4,6 @@
 [![Mastodon Follow](https://img.shields.io/mastodon/follow/109552736199041636?domain=https%3A%2F%2Ftwit.social&style=flat)](https://twit.social/@brass75)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
-
 This is a plugin pack for the `render-engine` static site generator. It currently includes the
 following plugins:
 
@@ -46,6 +45,7 @@ The plugin has the following default settings:
     "max_entries": 3,
 }
 ```
+
 - `collection` - a list of attributes to include for the collection.
 - `entries` - a list of attributes to include for a given entry.
 - `pages` - a list of pages to add the `COLLECTIONS` entry to it's `template_vars` (Only needed when running as a
@@ -70,6 +70,7 @@ attribute when declaring the `Page`. If no settings overrides are needed, includ
 by itself in the `plugin` attribute.
 
 Example:
+
 ```python
 from render_engine import Site, Page
 from re-plugin-pack import LatestEntries
@@ -97,6 +98,7 @@ if settings overrides are being used. To configure without additional settings, 
 `app.register_plugin(LatestEntries)`.
 
 Example:
+
 ```python
 from render_engine import Site, Page
 from re-plugin-pack import LatestEntries
@@ -120,6 +122,7 @@ The latest entries will be added to the `COLLECTIONS` key of the `template_vars`
 and can be accessed in the template as `COLLECTIONS`.
 
 Example template implementation:
+
 ```
 {% for collection, collection_data in COLLECTIONS.items() %}
     Most recent <a href="{{ collection_data['url'] }}">{{ collection }}</a> entries:
@@ -153,6 +156,7 @@ if settings overrides are being used. To configure without additional settings, 
 `app.register_plugin(NextPrevPlugin)`.
 
 Example:
+
 ```python
 from render_engine import Site, Page
 from re-plugin-pack import NextPrevPlugin
@@ -177,6 +181,7 @@ attribute when declaring the `Collection`. If no settings overrides are needed, 
 `NextPrevPlugin` by itself in the `plugin` attribute.
 
 Example:
+
 ```python
 from render_engine import Site, Page
 from re-plugin-pack import NextPrevPlugin
@@ -341,7 +346,7 @@ TypeError: '<' not supported between instances of 'datetime.datetime' and 'datet
 and rendering if using the `format_datetime` function it is important that the date-like objects
 be normalized into `datetime.datetime` objects regardless of how they are set.
 
-### Settings
+### DateNormalizer Settings
 
 `DateNormalizer` has no settings.
 
