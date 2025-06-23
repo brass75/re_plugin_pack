@@ -328,3 +328,32 @@ draft: Yes
 ---
 This is a draft post
 ```
+## `DateNormalizer`
+
+The goal of this plugin is to normalize entries in the `date` attribute of pages. This is necessary
+since valid entries include `datetime.date`, `datetime.datetime`, and date like strings. Since
+inconsistencies in the values of these fields can cause issues with sorting:
+
+```
+TypeError: '<' not supported between instances of 'datetime.datetime' and 'datetime.date'
+```
+
+and rendering if using the `format_datetime` function it is important that the date-like objects
+be normalized into `datetime.datetime` objects regardless of how they are set.
+
+### Settings
+
+`DateNormalizer` has no settings.
+
+### Configuration
+
+`DateNormalizer` is a `Site` level plugins that runs prior to the site being rendered. It must
+be registered at the site level:
+
+```python
+from render_engine import Site, Page
+from re-plugin-pack import DateNormalizer
+
+app = Site()
+app.register_plugins(DateNormalizer)
+```

@@ -413,7 +413,7 @@ wheels = [
 
 [[package]]
 name = "re-plugin-pack"
-version = "2025.6.1b4"
+version = "2025.6.1b5"
 source = { editable = "." }
 dependencies = [
     { name = "render-engine" },
@@ -430,7 +430,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "render-engine", specifier = ">=2025.6.1b1" }]
+requires-dist = [{ name = "render-engine", specifier = ">=2025.6.1b2" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -444,7 +444,7 @@ dev = [
 
 [[package]]
 name = "render-engine"
-version = "2025.6.1b1"
+version = "2025.6.1b2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jinja2" },
@@ -458,9 +458,9 @@ dependencies = [
     { name = "render-engine-parser" },
     { name = "rich" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f9/c8/afaf39893aae4ccd2ae6f4a0ce10266ab0bb4d8b0109d0da0d6fcf16be45/render_engine-2025.6.1b1.tar.gz", hash = "sha256:ebfdc344cce59637b7063fb29f303433aba12816eb6c66108b2facb48af8106f", size = 11829793 }
+sdist = { url = "https://files.pythonhosted.org/packages/23/4a/65092dc4a79566de876488763da363c6f7712a84a6df4b55412ffcaecac7/render_engine-2025.6.1b2.tar.gz", hash = "sha256:b28fc15effaacb6c1c2a80faf8ef2200f858976dfa5ccc0e8dbc0668175b9972", size = 11829992 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/05/5d/88e1e9ae544cb9066fca61242b9e68c4045b88bab465f60f9b866a9da49a/render_engine-2025.6.1b1-py3-none-any.whl", hash = "sha256:25fedbcc9a0b2954d2aefdc9b02bfaa078d55e93985e0bac6f93c73a89267a01", size = 35773 },
+    { url = "https://files.pythonhosted.org/packages/95/db/8d6d1e8577099d10c95a71acb46c29058af97879fff79d182ba9f6d2eeeb/render_engine-2025.6.1b2-py3-none-any.whl", hash = "sha256:5d75bfccecdc00e6933d2f6bb428411e9634d99740e80b55280bb9311d79ec6c", size = 35777 },
 ]
 
 [[package]]
