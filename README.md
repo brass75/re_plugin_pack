@@ -10,6 +10,7 @@ following plugins:
 - [`LatestEntries`](#latestentries)
 - [`NextPrevPlugin`](#nextprevplugin)
 - [`Drafts`](#drafts)
+- [`DateNormalizer](#datenormalizer)
 
 ## Installation
 
@@ -333,6 +334,7 @@ draft: Yes
 ---
 This is a draft post
 ```
+
 ## `DateNormalizer`
 
 The goal of this plugin is to normalize entries in the `date` attribute of pages. This is necessary
