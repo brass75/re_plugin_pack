@@ -10,7 +10,7 @@ following plugins:
 - [`LatestEntries`](#latestentries)
 - [`NextPrevPlugin`](#nextprevplugin)
 - [`Drafts`](#drafts)
-- [`DateNormalizer](#datenormalizer)
+- [`DateNormalizer`](#datenormalizer)
 
 ## Installation
 
