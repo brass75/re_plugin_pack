@@ -9,7 +9,6 @@ license-files = ["LICENSE.md"]
 requires-python = ">=3.10"
 dependencies = [
     "render-engine>=2025.6.1",
-]
 
 [dependency-groups]
 dev = [
