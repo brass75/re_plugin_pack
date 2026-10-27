@@ -74,7 +74,7 @@ Example:
 
 ```python
 from render_engine import Site, Page
-from re-plugin-pack import LatestEntries
+from re_plugin_pack import LatestEntries
 
 app = Site()
 @app.page
@@ -102,7 +102,7 @@ Example:
 
 ```python
 from render_engine import Site, Page
-from re-plugin-pack import LatestEntries
+from re_plugin_pack import LatestEntries
 
 app = Site()
 
@@ -160,7 +160,7 @@ Example:
 
 ```python
 from render_engine import Site, Page
-from re-plugin-pack import NextPrevPlugin
+from re_plugin_pack import NextPrevPlugin
 
 app = Site()
 
@@ -185,7 +185,7 @@ Example:
 
 ```python
 from render_engine import Site, Page
-from re-plugin-pack import NextPrevPlugin
+from re_plugin_pack import NextPrevPlugin
 
 app = Site()
 @app.page
@@ -359,7 +359,7 @@ be registered at the site level:
 
 ```python
 from render_engine import Site, Page
-from re-plugin-pack import DateNormalizer
+from re_plugin_pack import DateNormalizer
 
 app = Site()
 app.register_plugins(DateNormalizer)
