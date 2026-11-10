@@ -43,3 +43,18 @@ def test_drafts(show_drafts, expected, site):
     collection = site.route_list['mycollection']
     site.render()
     assert len(collection.pages) == expected
+
+
+def test_draft_order(site):
+    """Tests that Collection.pages are properly sorted after handling the drafts"""
+
+    @site.collection
+    class TestCollection(Collection):
+        sort_by = 'content'
+        pages = [Page3(), Page1(), Page2()]
+        plugins = [(Drafts, {'show_drafts': False})]
+
+    collection = site.route_list['testcollection']
+    assert collection.pages != collection.sorted_pages
+    site.render()
+    assert collection.pages == collection.sorted_pages

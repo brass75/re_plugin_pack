@@ -21,4 +21,4 @@ class Drafts:
         if settings['show_drafts']:
             print('Showing draft pages.')
             return
-        collection.pages = [page for page in collection if not getattr(page, 'draft', False)]
+        collection.pages = [page for page in collection.sorted_pages if not getattr(page, 'draft', False)]
