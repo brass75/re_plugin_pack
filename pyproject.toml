@@ -3,7 +3,7 @@ name = "re_plugin_pack"
 version = "2025.6.1"
 description = "Plugin pack for render-engine static site generator"
 readme = "README.md"
-authors = [{name = "Dan Shernicoff", email = "dan@brassnet.biz"}]
+authors = [{ name = "Dan Shernicoff", email = "dan@brassnet.biz" }]
 license = "MIT"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.11"
@@ -13,12 +13,12 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "coverage>=7.8.0",
-    "freezegun>=1.5.2",
-    "pytest>=8.4.0",
-    "uv-build>=0.7.12,<0.8.0",
-    "ruff",
-    "pre-commit>=4.2.0",
+  "coverage>=7.8.0",
+  "freezegun>=1.5.2",
+  "pytest>=8.4.0",
+  "uv-build>=0.7.12,<0.8.0",
+  "ruff",
+  "pre-commit>=4.2.0",
 ]
 
 [project.urls]
@@ -30,22 +30,20 @@ target-version = "py311"
 # Allow lines to be as long as 120 characters.
 line-length = 120
 lint.select = [
-  "E",   # pycodestyle
-  "F",   # pyflakes
-  "UP",  # pyupgrade
-  "I",   # imports
+  "E",  # pycodestyle
+  "F",  # pyflakes
+  "UP", # pyupgrade
+  "I",  # imports
 ]
 
 
-lint.ignore = [
-]
+lint.ignore = []
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
 lint.fixable = ["ALL"]
 lint.unfixable = []
 
-exclude = [
-]
+exclude = []
 
 [tool.ruff.format]
 quote-style = "single"
@@ -53,5 +51,5 @@ indent-style = "space"
 docstring-code-format = true
 
 [build-system]
-requires = ["uv_build>=0.7.12,<0.8.0"]
+requires = ["uv_build>=0.13.7,<0.14.0"]
 build-backend = "uv_build"

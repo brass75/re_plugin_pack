@@ -1,0 +1,21 @@
+name: Build & Inspect
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions: {}
+
+jobs:
+  build-and-inspect-package:
+    name: Build & inspect package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: hynek/build-and-inspect-python-package@67230f7b8410ae0052b39c1efc89d89fff43ff10 # v3.0.2
