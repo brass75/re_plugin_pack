@@ -8,7 +8,7 @@ license = "MIT"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.11"
 dependencies = [
-    "render-engine>=2025.6.1",
+    "render-engine>=2026.11.2",
 ]
 
 [dependency-groups]
