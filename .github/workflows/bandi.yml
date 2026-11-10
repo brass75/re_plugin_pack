@@ -12,7 +12,6 @@ permissions: {}
 jobs:
   build-and-inspect-package:
     name: Build & inspect package
-    needs: test
     runs-on: ubuntu-latest
 
     steps:
