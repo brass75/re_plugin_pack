@@ -1,8 +1,6 @@
 """Plugin to enable skipping draft pages"""
 
-from collections.abc import Iterable
-
-from render_engine import Collection, Site, Page
+from render_engine import Collection, Site
 from render_engine.plugins import hook_impl
 
 
